@@ -34,6 +34,19 @@ public class SelectionSort {
         }
     }*/
 
+    //排序作业 从arr[0...i)是无序得；arr[i...n)是有序的 也就是相反的实现
+//    public static <E extends Comparable<E>> void sort2(E[] arr){
+//        for (int i = arr.length-1; i >= 0; i--) {
+//            int maxIndex = i;
+//            for (int j=i;j>=0;j--){
+//                if (arr[maxIndex].compareTo(arr[j])<0){
+//                    maxIndex = j;
+//                }
+//            }
+//            swap(arr,i,maxIndex);
+//        }
+//    }
+
     private static <E> void swap(E[] arr,int i,int j){
         E temp = arr[i];
         arr[i] = arr[j];
@@ -41,13 +54,13 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        int[] dataSize = {10000,100000};
+        int[] dataSize = {10000};
         for (int n:dataSize){
             Integer[] arr = ArrayGenerator.generateRandomArray(n,n);
             //抽象出测试方法
             SortingHelper.sortTest("SelectionSort",arr);
+//            SortingHelper.sortTest("sort2",arr);
         }
-
     }
 
 }
