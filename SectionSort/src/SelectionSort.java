@@ -3,9 +3,9 @@
  * @Date 2021/2/9 20:07
  * @Annotation 选择排序法 [要可比较]
  */
-public class SectionSort {
+public class SelectionSort {
 
-    private SectionSort(){}
+    private SelectionSort(){}
 
     //arr[0...i)是有序得；arr[i...n)是无序的
     //extend在泛型中表示要实现某个接口
@@ -16,9 +16,10 @@ public class SectionSort {
             int minIndex = i;
             for (int j=i;j<arr.length;j++){
                 if (arr[minIndex].compareTo(arr[j])>0){
-                    swap(arr,minIndex,j);
+                    minIndex = j;
                 }
             }
+            swap(arr,i,minIndex);
         }
     }
 
@@ -40,25 +41,12 @@ public class SectionSort {
     }
 
     public static void main(String[] args) {
-        Integer[] arr = {65,1,98,45,96,3,2,7,85,96,44};
-        SectionSort.sort(arr);
-        for (int e:arr){
-            System.out.print(e+" ");
+        int[] dataSize = {10000,100000};
+        for (int n:dataSize){
+            Integer[] arr = ArrayGenerator.generateRandomArray(n,n);
+            //抽象出测试方法
+            SortingHelper.sortTest("SelectionSort",arr);
         }
-        System.out.println();
-
-        Student[] students = {
-                new Student("Alex",91),
-                new Student("Sam",100),
-                new Student("Mike",45),
-                new Student("John",57)
-        };
-
-        SectionSort.sort(students);
-        for (Student student:students){
-            System.out.print(student+" ");
-        }
-        System.out.println();
 
     }
 
