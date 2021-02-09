@@ -1,19 +1,21 @@
 /**
  * @Author Alex Zheng
  * @Date 2021/2/9 20:07
- * @Annotation
+ * @Annotation 选择排序法 [要可比较]
  */
 public class SectionSort {
 
     private SectionSort(){}
 
     //arr[0...i)是有序得；arr[i...n)是无序的
-    public static void sort(int[] arr){
+    //extend在泛型中表示要实现某个接口
+    //类实现了Comparable<E>则代表其是可比较的
+    public static <E extends Comparable<E>> void sort(E[] arr){
         //选择arr[i...n)中的最小值索引
         for (int i = 0; i < arr.length; i++) {
             int minIndex = i;
             for (int j=i;j<arr.length;j++){
-                if (arr[minIndex]>arr[j]){
+                if (arr[minIndex].compareTo(arr[j])>0){
                     swap(arr,minIndex,j);
                 }
             }
@@ -21,24 +23,24 @@ public class SectionSort {
     }
 
     //自己写
-    /*public static void sort(int[] arr){
+ /*   public static <E extends Comparable<E>> void sort(E[] arr){
         for (int i = 0; i < arr.length; i++) {
             for (int j=i;j<arr.length;j++){
-                if (arr[i]>arr[j]){
+                if (arr[i].compareTo(arr[j])>0){
                     swap(arr,i,j);
                 }
             }
         }
     }*/
 
-    private static void swap(int[] arr,int i,int j){
-        int temp = arr[i];
+    private static <E> void swap(E[] arr,int i,int j){
+        E temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
     public static void main(String[] args) {
-        int[] arr = {65,1,98,45,96,3,2,7,85,96,44};
+        Integer[] arr = {65,1,98,45,96,3,2,7,85,96,44};
         sort(arr);
         for (int e:arr){
             System.out.print(e+" ");
