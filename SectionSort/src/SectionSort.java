@@ -41,11 +41,25 @@ public class SectionSort {
 
     public static void main(String[] args) {
         Integer[] arr = {65,1,98,45,96,3,2,7,85,96,44};
-        sort(arr);
+        SectionSort.sort(arr);
         for (int e:arr){
             System.out.print(e+" ");
         }
         System.out.println();
+
+        Student[] students = {
+                new Student("Alex",91),
+                new Student("Sam",100),
+                new Student("Mike",45),
+                new Student("John",57)
+        };
+
+        SectionSort.sort(students);
+        for (Student student:students){
+            System.out.print(student+" ");
+        }
+        System.out.println();
+
     }
 
 }
