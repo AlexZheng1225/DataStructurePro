@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DataStructurePro.iml" filepath="$PROJECT_DIR$/DataStructurePro.iml" />
       <module fileurl="file://$PROJECT_DIR$/LinearSearch/LinearSearch.iml" filepath="$PROJECT_DIR$/LinearSearch/LinearSearch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SectionSort/SectionSort.iml" filepath="$PROJECT_DIR$/SectionSort/SectionSort.iml" />
     </modules>
   </component>
 </project>
