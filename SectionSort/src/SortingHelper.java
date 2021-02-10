@@ -24,8 +24,6 @@ public class SortingHelper {
             SelectionSort.sort(arr);
         }else if (sortname.equals("InsertionSort")){
             InsertionSort.sort(arr);
-        }else if (sortname.equals("InsertionSort2")){
-            InsertionSort.sort2(arr);
         }
 //        else if (sortname.equals("sort2")){
 //            SelectionSort.sort2(arr);
