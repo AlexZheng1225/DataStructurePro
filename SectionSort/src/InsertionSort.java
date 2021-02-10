@@ -31,15 +31,12 @@ public class InsertionSort {
     //插入排序法优化版本
     //后续课程中使用此种实现作为选择插入的实现
     public static <E extends Comparable<E>> void sort2(E[] arr) {
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length ; i++) {
             //将arr[i]插入到合适的位置
             E temp = arr[i];
             int j; //用于和temp交换的值在arr中的索引
-            for (j = i; j - 1 >= 0; j--) {
-                if (arr[j].compareTo(arr[j - 1]) < 0) {
-                    //向后移动一位，直接覆盖原有元素。
-                    arr[j] = arr[j - 1];
-                }
+            for (j = i; j - 1 >= 0 && temp.compareTo(arr[j - 1]) < 0; j--) {
+                arr[j] = arr[j - 1];
             }
             arr[j] = temp;
         }
@@ -57,7 +54,7 @@ public class InsertionSort {
             Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
             Integer[] arr2 = Arrays.copyOf(arr,arr.length);
             //抽象出测试方法
-            SortingHelper.sortTest("InsertionSort", arr);
+//            SortingHelper.sortTest("InsertionSort", arr);
             SortingHelper.sortTest("InsertionSort2", arr2);
         }
     }
