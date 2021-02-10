@@ -25,6 +25,20 @@ public class InsertionSort {
         }
     }
 
+    //作业：重新实现插入排序法
+    //思路：arr[0...i)是无序的；arr[i...n)是有序的---也就是相反的实现
+    public static <E extends Comparable<E>> void sort1(E[] arr) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            //将arr[i]插入到合适的位置
+            E temp = arr[i];
+            int j; //用于和temp交换的值在arr中的索引
+            for (j = i; j < arr.length-1 && temp.compareTo(arr[j + 1]) > 0; j++) {
+                arr[j + 1] = arr[j];
+            }
+            arr[j] = temp;
+        }
+    }
+
 
     public static void main(String[] args) {
         int[] dataSize = {10000, 100000};
@@ -32,8 +46,8 @@ public class InsertionSort {
             Integer[] arr = ArrayGenerator.generateRandomArray(n, n);
             Integer[] arr2 = Arrays.copyOf(arr,arr.length);
             //抽象出测试方法
-            SortingHelper.sortTest("InsertionSort", arr);
-            SortingHelper.sortTest("SelectionSort", arr2);
+//            SortingHelper.sortTest("InsertionSort", arr);
+//            SortingHelper.sortTest("SelectionSort", arr2);
 
             System.out.println();
 
@@ -44,7 +58,7 @@ public class InsertionSort {
             arr2 = Arrays.copyOf(arr,arr.length);
 
             SortingHelper.sortTest("InsertionSort", arr);
-            SortingHelper.sortTest("SelectionSort", arr2);
+//            SortingHelper.sortTest("SelectionSort", arr2);
 
             System.out.println();
         }
