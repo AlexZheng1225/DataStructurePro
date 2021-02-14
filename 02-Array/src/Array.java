@@ -3,14 +3,14 @@
  * @Date 2021/2/13 15:16
  * @Annotation
  */
-public class Array {
+public class Array<E> { //添加一个<E> 表示存放一个数据类型
 
-    private int[] data;
+    private E[] data;
     private int size;
 
     //构造参数，传入数组的容量capacity构造Array
     public Array(int capacity) {
-        data = new int[capacity];
+        data = (E[]) new Object[capacity]; //需要这样实现泛型
         size = 0;
     }
 
@@ -35,7 +35,7 @@ public class Array {
     }
 
     //向数组末尾添加元素e
-    public void addLast(int e) {
+    public void addLast(E e) {
 //        //判断一下数组空间是否能容器新加入的元素
 //        if (size==data.length){
 //            throw new IllegalArgumentException("AddLast Failed,array is full");
@@ -46,12 +46,12 @@ public class Array {
     }
 
     //向数组头部添加元素e
-    public void addFirst(int e){
+    public void addFirst(E e){
         add(0,e);
     }
 
     //向数组中index位置添加元素e
-    public void add(int index,int e){
+    public void add(int index,E e){
         if (size==data.length){
             throw new IllegalArgumentException("Add Failed,array is full");
         }
@@ -68,7 +68,7 @@ public class Array {
     }
 
     //获取index索引位置的元素值e
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Get is faild. Index is illegal.");
         }
@@ -76,7 +76,7 @@ public class Array {
     }
 
     //修改index索引位置的元素值e
-    public void set(int index,int e) {
+    public void set(int index,E e) {
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Set is faild. Index is illegal.");
         }
@@ -84,9 +84,9 @@ public class Array {
     }
 
     //查找数组中是否有元素e
-    public boolean contanis(int e) {
+    public boolean contanis(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return true;
             }
         }
@@ -94,9 +94,9 @@ public class Array {
     }
 
     //查找元素e的索引，查找到则返回索引值index 否则返回-1
-    public int find(int e) {
+    public int find(E e) {
         for (int i = 0; i < size; i++) {
-            if (data[i] == e) {
+            if (data[i].equals(e)) {
                 return i;
             }
         }
@@ -104,30 +104,32 @@ public class Array {
     }
 
     //从数组中删除元素[传入下标]
-    public int remove(int index){
+    public E remove(int index){
         if (index < 0 || index >= size) {
             throw new IllegalArgumentException("Remove is faild. Index is illegal.");
         }
-        int ret = data[index];
+        E ret = data[index];
         for (int i = index; i < size-1; i++) {
             data[i] = data[i+1];
         }
         size--;
+        //防止对象游离 != 内存泄漏
+        data[size] = null;
         return ret;
     }
 
     //删除数组的第一个元素
-    public int removeFirst(){
+    public E removeFirst(){
         return remove(0);
     }
 
     //删除数组的最后一个元素
-    public int removeLast(){
+    public E removeLast(){
         return remove(size-1);
     }
 
     //从数组中删除元素e （并不保证删除所有元素e 因为元素e可能不止一个 find函数同理）
-    public void removeElement(int e){
+    public void removeElement(E e){
         int index = find(e);
         if(index!=-1){
             remove(index);
