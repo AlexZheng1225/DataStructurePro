@@ -52,12 +52,13 @@ public class Array<E> { //添加一个<E> 表示存放一个数据类型
 
     //向数组中index位置添加元素e
     public void add(int index,E e){
-        if (size==data.length){
-            throw new IllegalArgumentException("Add Failed,array is full");
-        }
-
         if (index < 0 || index > size){
             throw new IllegalArgumentException("Add Failed,array require index >=0 or ibdex <= size");
+        }
+
+        //扩容
+        if (size == data.length) {
+            resize(data.length * 2);
         }
 
         for (int i = size - 1; i >= index; i--) {
@@ -115,6 +116,12 @@ public class Array<E> { //添加一个<E> 表示存放一个数据类型
         size--;
         //防止对象游离 != 内存泄漏
         data[size] = null;
+
+        //缩容
+        if (size == data.length / 2) {
+            resize(data.length / 2);
+        }
+
         return ret;
     }
 
@@ -151,5 +158,13 @@ public class Array<E> { //添加一个<E> 表示存放一个数据类型
         sb.append(", length=").append(data.length);
         sb.append('}');
         return sb.toString();
+    }
+
+    private void resize(int newCapacity){
+        E[] newData = (E[]) new Object[newCapacity];
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
+        data = newData;
     }
 }
