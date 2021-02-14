@@ -83,6 +83,57 @@ public class Array {
         data[index] = e;
     }
 
+    //查找数组中是否有元素e
+    public boolean contanis(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //查找元素e的索引，查找到则返回索引值index 否则返回-1
+    public int find(int e) {
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //从数组中删除元素[传入下标]
+    public int remove(int index){
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Remove is faild. Index is illegal.");
+        }
+        int ret = data[index];
+        for (int i = index; i < size-1; i++) {
+            data[i] = data[i+1];
+        }
+        size--;
+        return ret;
+    }
+
+    //删除数组的第一个元素
+    public int removeFirst(){
+        return remove(0);
+    }
+
+    //删除数组的最后一个元素
+    public int removeLast(){
+        return remove(size-1);
+    }
+
+    //从数组中删除元素e （并不保证删除所有元素e 因为元素e可能不止一个 find函数同理）
+    public void removeElement(int e){
+        int index = find(e);
+        if(index!=-1){
+            remove(index);
+        }
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Array{");
