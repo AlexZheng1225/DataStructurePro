@@ -118,7 +118,7 @@ public class Array<E> { //添加一个<E> 表示存放一个数据类型
         data[size] = null;
 
         //缩容
-        if (size == data.length / 2) {
+        if (size == data.length / 4 && data.length / 2 != 0) { //防止复杂度震荡
             resize(data.length / 2);
         }
 
