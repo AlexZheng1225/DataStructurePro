@@ -67,4 +67,36 @@ public class Array {
         size++;
     }
 
+    //获取index索引位置的元素值e
+    public int get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Get is faild. Index is illegal.");
+        }
+        return data[index];
+    }
+
+    //修改index索引位置的元素值e
+    public void set(int index,int e) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException("Set is faild. Index is illegal.");
+        }
+        data[index] = e;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("Array{");
+        sb.append("data=");
+        if (data == null) sb.append("null");
+        else {
+            sb.append('[');
+            for (int i = 0; i < size; ++i)
+                sb.append(i == 0 ? "" : ", ").append(data[i]);
+            sb.append(']');
+        }
+        sb.append(", size=").append(size);
+        sb.append(", length=").append(data.length);
+        sb.append('}');
+        return sb.toString();
+    }
 }
