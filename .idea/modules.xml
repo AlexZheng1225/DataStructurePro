@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/02-Array/02-Array.iml" filepath="$PROJECT_DIR$/02-Array/02-Array.iml" />
       <module fileurl="file://$PROJECT_DIR$/03-Stack/03-Stack.iml" filepath="$PROJECT_DIR$/03-Stack/03-Stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/04-Queue/04-Queue.iml" filepath="$PROJECT_DIR$/04-Queue/04-Queue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-LinkedList/05-LinkedList.iml" filepath="$PROJECT_DIR$/05-LinkedList/05-LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/DataStructurePro.iml" filepath="$PROJECT_DIR$/DataStructurePro.iml" />
       <module fileurl="file://$PROJECT_DIR$/LinearSearch/LinearSearch.iml" filepath="$PROJECT_DIR$/LinearSearch/LinearSearch.iml" />
       <module fileurl="file://$PROJECT_DIR$/SectionSort/SectionSort.iml" filepath="$PROJECT_DIR$/SectionSort/SectionSort.iml" />
