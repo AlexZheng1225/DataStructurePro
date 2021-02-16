@@ -31,11 +31,15 @@ public class Main {
 
         ArrayQueue<Integer> arrayQueue = new ArrayQueue<>();
         double time1 = testQueue(arrayQueue, opCount);
-        System.out.println("ArrayQueue: " + time1 + "s"); //ArrayQueue: 8.838634s
+        System.out.println("ArrayQueue: " + time1 + "s"); //ArrayQueue: 6.1197189s
 
         LoopQueue<Integer> loopQueue = new LoopQueue<>();
         double time2 = testQueue(loopQueue, opCount);
-        System.out.println("LoopQueue: " + time2 + "s"); //LoopQueue: 0.0276784s
+        System.out.println("LoopQueue: " + time2 + "s"); //LoopQueue: 0.022479s
+
+        LinkedListQueue<Integer> linkedListQueue = new LinkedListQueue<>();
+        double time3 = testQueue(linkedListQueue, opCount);
+        System.out.println("LinkedListQueue: " + time3 + "s"); //LinkedListQueue: 0.0175818s
     }
 
 }
