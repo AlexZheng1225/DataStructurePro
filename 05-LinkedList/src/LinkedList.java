@@ -72,4 +72,68 @@ public class LinkedList<E> {
         add(size, e);
     }
 
+    //获得链表的index(0-based)位置的元素e
+    //在链表中这不是一个常用的操作 练习用(考题、面试题、练习题)
+    public E get(int index){
+        if (index < 0 || index >= size){
+            throw new IllegalArgumentException("Get faile.Illegal index.");
+        }
+        Node current = dummyHead.next;
+        //get不需要index-1，因为我们要找的就是index节点
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.e;
+    }
+
+    //获取链表的第一个元素
+    public E getFirst() {
+        return get(0);
+    }
+
+    //获得链表最后一个元素
+    public E getLast() {
+        return get(size - 1);
+    }
+
+    //更新链表的index(0-based)位置的元素e
+    //在链表中这不是一个常用的操作 练习用(考题、面试题、练习题)
+    public void set(int index,E e){
+        if (index < 0 || index >= size){
+            throw new IllegalArgumentException("Set faile.Illegal index.");
+        }
+        Node current = dummyHead.next;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        current.e = e;
+    }
+
+    //查找链表中是否存在元素e
+    public boolean contains(E e){
+        Node current = dummyHead.next;
+        while (current!=null){
+            if (current.e.equals(e)){
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer();
+//        Node current = dummyHead.next;
+//        while (current!=null){
+//            sb.append(current + "->");
+//            current = current.next;
+//        }
+        for (Node current = dummyHead.next;current != null;current = current.next){
+            sb.append(current + "->");
+        }
+        sb.append("NULL");
+        return sb.toString();
+    }
+
 }
