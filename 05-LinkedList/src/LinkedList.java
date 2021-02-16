@@ -29,11 +29,11 @@ public class LinkedList<E> {
         }
     }
 
-    private Node head;
+    private Node dummyHead;
     private int size;
 
     public LinkedList(){
-        head = null;
+        dummyHead = new Node(null,null);
         size = 0;
     }
 
@@ -47,35 +47,24 @@ public class LinkedList<E> {
         return size == 0;
     }
 
-    //在链表头添加新的元素
-    public void addFirst(E e){
-//        Node node = new Node(e);
-//        node.next = head;
-//        head = node;
-        Node node = new Node(e,head);
-        size++;
-    }
-
     //在链表的index(0-based)位置添加新的元素e
     //在链表中这不是一个常用的操作 练习用(考题、面试题、练习题)
     public void add(int index,E e){
         if (index < 0 || index > size){ //可以取到size，即在链表的尾部添加元素
             throw new IllegalArgumentException("Add faile.Illegal index.");
         }
-
-        if (index == 0){
-            addFirst(e);
-        }else{
-            Node prev = head;
-            for (int i = 0; i < index - 1; i++) {
+            Node prev = dummyHead;
+        //只需要遍历index次就好
+            for (int i = 0; i < index; i++) {
                 prev = prev.next;
             }
-//            Node node = new Node(e);
-//            node.next = prev.next;
-//            prev.next = node;
             prev.next = new Node(e,prev.next);
             size++;
-        }
+    }
+
+    //在链表头添加新的元素
+    public void addFirst(E e){
+        add(0,e);
     }
 
     //向链表末尾添加新元素e
