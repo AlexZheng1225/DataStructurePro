@@ -24,4 +24,13 @@ public class Solution2 {
         }
         return dummyHead.next;
     }
+
+    public static void main(String[] args) {
+        int[] nums = {6,5,6,3,9,6,4,7,8,5,2,3,6};
+        ListNode head = new ListNode(nums);
+        System.out.println(head);
+
+        ListNode res = new Solution2().removeElements(head,6);
+        System.out.println(res);
+    }
 }
