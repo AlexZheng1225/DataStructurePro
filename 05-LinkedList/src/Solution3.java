@@ -9,15 +9,13 @@ public class Solution3 {
             return null;
         }
 
-        //删除的结果赋值给res
-        //res存储的是头节点后面跟的链表中所有值为val的节点删除后剩下的链表
-        ListNode res = removeElements(head.next,val);
+        head.next = removeElements(head.next,val);
 
         //开始解决
         if (head.val == val){
-            return res;
+            //跳过一个 == 删除本节点
+            return head.next;
         }else{
-            head.next = res;
             return head;
         }
     }
